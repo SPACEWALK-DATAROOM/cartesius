@@ -1,6 +1,8 @@
+import numpy as np
+
 from shapely.affinity import scale
 from shapely.affinity import translate
-from shapely.geometry import Point
+from shapely.geometry import Point, Polygon
 
 
 class Transform:
@@ -30,7 +32,7 @@ class NormalizePositionTransform(Transform):
     polygon is always is located in (0, 0), with positive coordinates.
     """
 
-    def __call__(self, polygon):
+    def __call__(self, polygon: Polygon) -> Polygon:
         min_x, min_y, *_ = polygon.bounds
         return translate(polygon, -min_x, -min_y)
 
@@ -40,7 +42,7 @@ class NormalizeScaleTransform(Transform):
     polygon's size is always between 0 and 1.
     """
 
-    def __call__(self, polygon):
+    def __call__(self, polygon: Polygon) -> Polygon:
         min_x, min_y, max_x, max_y = polygon.bounds
         x_size = max_x - min_x
         y_size = max_y - min_y
@@ -63,11 +65,11 @@ class NormalizeScaleStaticTransform(Transform):
     dataset (does not change from one polygon to another).
     """
 
-    def __init__(self, max_radius_range, *args, **kwargs):
+    def __init__(self, max_radius_range: float, *args, **kwargs):
         super().__init__()
         self.max_radius_range = max_radius_range
 
-    def __call__(self, polygon):
+    def __call__(self, polygon: Polygon) -> Polygon:
         scale_size = self.max_radius_range * 4
 
         min_x, min_y, *_ = polygon.bounds
@@ -77,8 +79,27 @@ class NormalizeScaleStaticTransform(Transform):
         return scale(polygon, xfact=scale_ratio, yfact=scale_ratio, origin=ref)
 
 
+class NormalizeMaxNormTransform(Transform):
+    """Transform that normalizes the given polygon, so that the polygon's vertices
+    max norm is always 1.
+    """
+    
+    def __call__(self, polygon: Polygon) -> Polygon:
+        exterior_coordinates = np.array(polygon.exterior.coords)
+        centroid = exterior_coordinates.mean(axis=0)
+
+        centralized_coordinates = exterior_coordinates - centroid
+
+        max_norm = np.linalg.norm(centralized_coordinates, axis=1).max()
+
+        normalized_coordinates = centralized_coordinates / max_norm
+
+        return Polygon(normalized_coordinates)
+
+
 TRANSFORMS = {
     "norm_pos": NormalizePositionTransform,
     "norm_scale": NormalizeScaleTransform,
-    "norm_static_scale": NormalizeScaleStaticTransform
+    "norm_static_scale": NormalizeScaleStaticTransform,
+    "norm_max_norm": NormalizeMaxNormTransform
 }

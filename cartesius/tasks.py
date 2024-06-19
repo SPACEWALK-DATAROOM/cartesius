@@ -1,6 +1,8 @@
 import numpy as np
 import torch.nn.functional as F
 
+from typing import Tuple
+from shapely.geometry import Polygon
 from cartesius.modeling import ScoreHead
 
 EPS = 1e-9
@@ -77,11 +79,11 @@ class GuessSize(Task):
     """Task predicting the size (width + height) of the polygon.
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> Tuple[float, float]:
         x_min, y_min, x_max, y_max = polygon.bounds
         return x_max - x_min, y_max - y_min
 
-    def get_head(self):
+    def get_head(self) -> ScoreHead:
         return ScoreHead(self.d_in, self.dropout, 2)
 
 
@@ -92,7 +94,7 @@ class GuessConvexity(Task):
     of the current polygon divided by the area of its convex hull.
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> float:
         convex_p = polygon.convex_hull
 
         if convex_p.area < EPS:
@@ -108,7 +110,7 @@ class GuessMinimumClearance(Task):
     to produce an invalid geometry.
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> float:
         c = polygon.minimum_clearance
         if c < float("inf"):
             return c
@@ -120,10 +122,10 @@ class GuessCentroid(Task):
     """Task predicting the centroid of the polygon.
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> Tuple[float, float]:
         return polygon.centroid.coords[0]
 
-    def get_head(self):
+    def get_head(self) -> ScoreHead:
         return ScoreHead(self.d_in, self.dropout, 2)
 
 
@@ -131,7 +133,7 @@ class GuessOmbrRatio(Task):
     """Task predicting the OMBR(oriented minimum bounding rectangle) ratio of the polygon.
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> float:
         ombr = polygon.minimum_rotated_rectangle
         if ombr.area == 0:
             return 1
@@ -142,7 +144,7 @@ class GuessAspectRatio(Task):
     """Task predicting the OMBR(oriented minimum bounding rectangle) aspect ratio of the polygon.
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> float:
         ombr = polygon.minimum_rotated_rectangle
         if ombr.area == 0:
             if ombr.length == 0:
@@ -159,7 +161,7 @@ class GuessOpeningRatio(Task):
     Used fixed length of opening, to match the purpose of discriminating deadspace.
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> float:
         if polygon.area == 0:
             return 0
         return polygon.buffer(-0.1).buffer(0.1).area / polygon.area
@@ -170,12 +172,12 @@ class GuessLongestThreeEdges(Task):
     TODO: This task needs entity head and categorical loss (To be implemented)
     """
 
-    def get_label(self, polygon):
+    def get_label(self, polygon: Polygon) -> np.ndarray:
         coords = np.array(polygon.exterior.coords)
         seglens = [np.linalg.norm(coords[i + 1] - coords[i]) for i in range(len(coords) - 1)]
         return np.argsort(seglens[::-1])[:3]
 
-    def get_head(self):
+    def get_head(self) -> ScoreHead:
         return ScoreHead(self.d_in, self.dropout, 3)
 
 

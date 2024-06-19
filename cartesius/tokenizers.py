@@ -1,3 +1,5 @@
+from typing import List, Union
+
 from shapely.geometry import Polygon
 import torch
 
@@ -20,7 +22,7 @@ class Tokenizer:
     def __init__(self, *args, max_seq_len=256, **kwargs):  # pylint: disable=unused-argument
         self.max_seq_len = max_seq_len
 
-    def __call__(self, polygons):
+    def __call__(self, polygons: Union[Polygon, List[Polygon]]) -> dict:
         """Main method of the tokenizer. It tokenize the given polygon(s).
 
         If the input is a list of polygons, polygons will be tokenized as a
@@ -39,7 +41,7 @@ class Tokenizer:
             # Simulate a batched input
             return self.tokenize([polygons])
 
-    def tokenize(self, polygons):
+    def tokenize(self, polygons: Union[Polygon, List[Polygon]]) -> dict:
         """Method tokenizing a list of polygons into tensors.
 
         Args:
