@@ -7,14 +7,13 @@ on:
       - "scripts/offline/**"
       - "**/*.md"
       - "docs/**"
-      - ".github/workflows/pytest.yml"
 
       - ".github/workflows/lint.yml"
       - "pylintrc"
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         python-version: [3.9]
@@ -22,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
