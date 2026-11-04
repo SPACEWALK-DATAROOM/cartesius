@@ -1,13 +1,9 @@
-# Reviewed isolated Python contracts
+# Cartesius label-row conversion contracts
 
-Run from a checkout using an existing Python environment with pytest, coverage (if requested), pandas, NumPy and python-dateutil. Additional actual dependencies depend on the repository: beautifulsoup4/lxml for XML and HTML; requests; de-ds-common (`deds.verifier`) for schema validation; psycopg2-binary for database exception/cursor types; pydantic 1.10 for service schemas. de-catalog uses its checked-in pypika source. Python 3.9 with pandas 1.3.5 is the historic compatibility environment except road-address--silver, which requires its prepared Python 3.12/pandas 2.2.3 environment. No dependencies are installed by the runner.
+Run `python tests/file50_python/pipeline/run_quality.py --coverage --output /path/to/private/evidence` using an existing Python environment with pytest and optional coverage. No dependencies are installed by this runner.
 
-```sh
-# Set only when dependencies are supplied from separate read-only checkouts/directories:
-export PIPELINE_EXTRA_PYTHONPATH="/path/to/actual/dependency/source:/path/to/private/deps"
-python tests/file50_python/pipeline/run_quality.py --coverage --output /path/to/evidence
-```
+The exact quality_scope.json selects three assertions in wave12/test_label_row_conversion.py. They execute the unchanged kaggle_convert_labels definition selected from the current cartesius/utils.py AST: scalar task rows, vector component order and stateless repeated/empty calls. Exact source/AST provenance is recorded; application startup, tensors, model inference and training are outside this isolated selection. A python -S control also passed all three bodies with site packages absent.
 
-The runner uses the current interpreter and runs only paths in quality_scope.json; it does not discover old20 or other lanes' tests. It records argv, dependency paths, full runtime output, JUnit, exit code and optional source coverage outside the checkout.
+The selected definition uses Python builtins and has no network calls. This quality runner does not add scripts/offline to its child PYTHONPATH, so the scripts/offline/sitecustomize.py socket guard is not automatically loaded here. The separate full offline runner does load its existing guard. This corrects the earlier copied claim; it does not introduce a new gate or claim live-service verification.
 
-These tests execute unchanged selected function/class definitions and explicitly supply real Python dependency objects. Startup imports are omitted and only Prefect task decorators are removed: this checks isolated transformations, parsers, request construction and state, not Prefect scheduling, SDK integration, DB SQL execution, browsers, services, native geometry or models. Static SQL assertions demonstrate generated strings only. Annotation compiler flags follow the original source, source order is retained, exact selection is checked and source/AST hashes are exposed as __source_provenance__. Extracted methods do not reconstruct their enclosing class or prove its private-name/super/import behavior. External I/O alone is replaced by mocks. Socket audit hooks reject real network connects and DNS requests. Genuine source failures remain failing tests and are detailed in the quality delivery.
+Only explicit selected paths execute; empty selection fails before discovery. Previous known evidence files are archived, unrelated caller files remain, and child/coverage failure exits propagate. Original expectations and genuine source failures are preserved.
