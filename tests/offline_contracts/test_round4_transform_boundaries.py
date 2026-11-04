@@ -3,21 +3,21 @@ from shapely.geometry import MultiPolygon
 from shapely.geometry import Polygon
 
 from cartesius.transforms import NormalizePositionTransform
-from cartesius.transforms import NormalizeScaleTransform
 from cartesius.transforms import NormalizeScaleStaticTransform
+from cartesius.transforms import NormalizeScaleTransform
 from cartesius.transforms import TRANSFORMS
 
 
 def test_position_normalization_translates_multipolygon_parts_and_preserves_holes_z_and_source():
-    source = MultiPolygon(
-        [
-            Polygon(
-                shell=[(10, 20, 5), (14, 20, 6), (14, 24, 7), (10, 24, 8), (10, 20, 5)],
-                holes=[[(11, 21, 5), (12, 21, 5), (12, 22, 5), (11, 22, 5), (11, 21, 5)],],
-            ),
-            Polygon([(20, 30, 1), (22, 30, 2), (22, 32, 3), (20, 32, 4), (20, 30, 1)]),
-        ]
-    )
+    source = MultiPolygon([
+        Polygon(
+            shell=[(10, 20, 5), (14, 20, 6), (14, 24, 7), (10, 24, 8), (10, 20, 5)],
+            holes=[
+                [(11, 21, 5), (12, 21, 5), (12, 22, 5), (11, 22, 5), (11, 21, 5)],
+            ],
+        ),
+        Polygon([(20, 30, 1), (22, 30, 2), (22, 32, 3), (20, 32, 4), (20, 30, 1)]),
+    ])
     original = source.wkt
 
     result = NormalizePositionTransform()(source)
