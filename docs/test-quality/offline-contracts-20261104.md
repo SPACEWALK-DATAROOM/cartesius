@@ -37,3 +37,16 @@ The existing offline runner now archives previous invocation artifacts and rejec
 Actual default workflow operational hold: Actual push-triggered pytest workflow executes existing tests/test_modeling.py:13 backward pass; backpropagation is explicitly outside user authorization. It also passes private package authentication via GH_PAT. No push/PR/merge; local commit only pending user authorization for workflow isolation.
 
 The detailed receipt records clone, selected pin/base HEAD, applied patch SHA256, source SHA preservation, exact publication exclusions, execution logs, reviews/fixes/CI, PR URL and merge SHA. Review status and actual MERGED state will be checked independently before a completed claim.
+
+## Current invocation evidence and review corrections
+
+The manifest runner now archives only its known evidence filenames before launch. Unrelated caller source files and scope manifests remain in place. An actual shadow coverage child exited77 after previous successful JUnit/coverage/exit evidence was seeded: the runner returned77, wrote a fresh failure exit record and left no current stale JUnit/coverage. Archived original bytes were checked. The exact original quality scope was then rerun: {'total': 3, 'failed': 0, 'errors': 0, 'skipped': 0, 'passed': 3}, exit0; case identity and each original pass/failure status are unchanged. Empty manifest tests are rejected before pytest can discover unrelated tests. Coverage export failures propagate and do not retain old success evidence.
+
+Full reproducible command (prepared interpreter and dependency paths, no installation):
+
+```sh
+PIPELINE_EXTRA_PYTHONPATH='/home/josh/scratch/code-asset-parallel-20261101/docx-target20-20261103/file20-python-execution/continuation/orchestration/deps:/home/josh/scratch/code-asset-parallel-20261101/docx-target20-20261103/file20-python-execution/common/repo:/home/josh/scratch/code-asset-parallel-20261101/docx-target20-20261103/file50-python-execution/pipeline/wave3/deps' /home/josh/code-asset-test-improvement-20261029/venvs/de-ds-common-original-s3/bin/python tests/file50_python/pipeline/run_quality.py --coverage --output <evidence-directory>
+```
+
+Fresh positive evidence: `/home/josh/scratch/code-asset-parallel-20261101/docx-target20-20261103/test-quality-20261104/publication-python/evidence/cartesius/freshness-quality`. Actual subprocess negative evidence: `/home/josh/scratch/code-asset-parallel-20261101/docx-target20-20261103/test-quality-20261104/publication-python/evidence/cartesius/freshness-negative.log`. Original tests/expectations/logs remain preserved, and production source SHA checks still match. The output paths shown are lane-private evidence; independent users may choose any private directory.
+
