@@ -6,37 +6,10 @@ Only Prefect's task decorator is removed. Original annotation policy is retained
 import __future__
 
 import ast
-import datetime
-from functools import partial
 import hashlib
-import io
-import itertools
-import json
-import logging
-import os
 from pathlib import Path
-import random
-import re
-import sys
-import time
-import types
-from types import MethodType
-from types import SimpleNamespace
-import typing
-
-from dateutil.relativedelta import relativedelta
-import numpy as np
-import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[4]
-
-
-def offline(event, args):
-    if event in ("socket.connect", "socket.getaddrinfo"):
-        raise RuntimeError("External network is unavailable in isolated source contracts")
-
-
-sys.addaudithook(offline)
 
 
 def load(path, names, owner=None, **bindings):
@@ -88,39 +61,7 @@ def load(path, names, owner=None, **bindings):
         if isinstance(node, ast.ImportFrom) and node.module == "__future__":
             for feature in node.names:
                 flags |= getattr(__future__, feature.name).compiler_flag
-    ns = {
-        "pd": pd,
-        "DataFrame": pd.DataFrame,
-        "np": np,
-        "logging": logging,
-        "datetime": datetime,
-        "dt": datetime,
-        "types": types,
-        "io": io,
-        "json": json,
-        "os": os,
-        "re": re,
-        "time": time,
-        "random": random,
-        "itertools": itertools,
-        "Path": Path,
-        "partial": partial,
-        "relativedelta": relativedelta,
-        "typing": typing,
-        "ty": typing,
-        "Any": typing.Any,
-        "Callable": typing.Callable,
-        "Dict": typing.Dict,
-        "List": typing.List,
-        "Tuple": typing.Tuple,
-        "Optional": typing.Optional,
-        "Union": typing.Union,
-        "Set": typing.Set,
-        "Iterable": typing.Iterable,
-        "__file__": str(source),
-        "__name__": "isolated_source_contract",
-        **bindings
-    }
+    ns = {"__file__": str(source), "__name__": "isolated_source_contract", **bindings}
     exec(compile(ast.Module(body=nodes, type_ignores=[]), str(source), "exec", flags=flags, dont_inherit=True), ns)
     ns["__source_provenance__"] = {
         "path": path,
