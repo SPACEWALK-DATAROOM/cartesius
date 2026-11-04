@@ -1,6 +1,10 @@
 name: lint
 
-on: push
+on:
+  push:
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
 
 jobs:
   lint:
@@ -20,6 +24,6 @@ jobs:
           yapf -rd .
       - name: Check format with pylint
         run: |
-          pip install pylint
+          pip install 'pylint~=2.11'
           pylint cartesius
           pylint tests --disable=redefined-outer-name

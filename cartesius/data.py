@@ -131,7 +131,7 @@ class PolygonDataset(Dataset):
         rs = np.clip(np.random.normal(avg_radius, spikeyness, n_vert), 0, 2 * avg_radius)
         xs = x_ctr + np.multiply(rs, np.cos(angles))
         ys = y_ctr + np.multiply(rs, np.sin(angles))
-        points = [(x, y) for x, y in zip(xs, ys)]
+        points = list(zip(xs, ys))
 
         if len(points) == 1:
             return Point(points)
