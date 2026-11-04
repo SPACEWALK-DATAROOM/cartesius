@@ -9,6 +9,8 @@ on:
       - "docs/**"
       - ".github/workflows/pytest.yml"
 
+      - ".github/workflows/lint.yml"
+      - "pylintrc"
 jobs:
   build:
 
