@@ -110,7 +110,7 @@ class PolygonDataset(Dataset):
             n_vert (int): Number of vertices.
 
         Returns:
-            shapely.geometry.Polygon: Generated Polygon.
+            shapely geometry: Point for one vertex, LineString for two, otherwise Polygon.
         """
         irregularity = irregularity * 2 * math.pi / n_vert
         spikeyness = spikeyness * avg_radius
