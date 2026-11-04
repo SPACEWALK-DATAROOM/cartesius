@@ -1,0 +1,8 @@
+[
+  {
+    "test": "wave12/test_label_row_conversion.py",
+    "case": "test_vector_and_scalar_labels_expand_in_task_and_component_order",
+    "definition": "kaggle_convert_labels",
+    "replacement": []
+  }
+]

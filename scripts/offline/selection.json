@@ -1,0 +1,4 @@
+[
+  "tests/test_transforms.py",
+  "tests/offline_contracts"
+]

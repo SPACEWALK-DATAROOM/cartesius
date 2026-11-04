@@ -1,0 +1,264 @@
+{
+  "command": [
+    "/home/josh/code-asset-test-improvement-20261029/venvs/cartesius/bin/python",
+    "-m",
+    "coverage",
+    "run",
+    "--branch",
+    "--source=cartesius",
+    "-m",
+    "pytest",
+    "-c",
+    "/dev/null",
+    "--rootdir=/home/josh/scratch/code-asset-parallel-20261101/prior-delivery-expansion/lane-06-round4/repos/cartesius",
+    "-p",
+    "pytest_mock",
+    "-p",
+    "pure_cartesius",
+    "--import-mode=importlib",
+    "-q",
+    "--junitxml=/home/josh/scratch/code-asset-parallel-20261101/prior-delivery-expansion/lane-06-round4/logs/cartesius-round4-final/junit.xml",
+    "tests/test_transforms.py",
+    "tests/offline_contracts"
+  ],
+  "cwd": "/home/josh/scratch/code-asset-parallel-20261101/prior-delivery-expansion/lane-06-round4/repos/cartesius",
+  "environment": {
+    "PATH": "/usr/bin:/bin",
+    "PYTHONPATH": "/home/josh/scratch/code-asset-parallel-20261101/prior-delivery-expansion/lane-06-round4/repos/cartesius/scripts/offline:/home/josh/scratch/code-asset-parallel-20261101/prior-delivery-expansion/lane-06-round4/repos/cartesius",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "COVERAGE_FILE": "/home/josh/scratch/code-asset-parallel-20261101/prior-delivery-expansion/lane-06-round4/logs/cartesius-round4-final/.coverage",
+    "AWS_EC2_METADATA_DISABLED": "true"
+  },
+  "returncode": 0,
+  "coverage_returncode": 0,
+  "seconds": 2.84620175184682,
+  "base_commit": "2ec94c3f8fb76bd553b1c7b3b813b4b195c8fdbc",
+  "tests": [
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p0]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p1]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p2]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p3]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p4]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p5]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p6]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p0]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p1]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p2]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p3]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p4]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p5]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p0]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p1]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p2]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p3]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p4]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p5]",
+      "origin": "original",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_round4_transform_boundaries",
+      "name": "test_position_normalization_translates_multipolygon_parts_and_preserves_holes_z_and_source",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_round4_transform_boundaries",
+      "name": "test_scale_normalization_uses_one_xy_factor_and_leaves_line_z_values_unchanged",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_round4_transform_boundaries",
+      "name": "test_public_transform_registry_resolves_each_supported_name_to_its_implementation",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_base_transform_requires_implementation",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_translation_preserves_hole_area_vertices_and_original",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_scale_preserves_anchor_aspect_ratio_and_area_scaling",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_degenerate_point_is_preserved_without_division_by_zero",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_vertical_line_length_normalized_without_horizontal_displacement",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_static_scaling_uses_one_common_factor_for_different_shapes",
+      "origin": "added",
+      "status": "passed"
+    }
+  ],
+  "counts": {
+    "cases": 28,
+    "passed": 28,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0,
+    "original": 19,
+    "added": 9
+  },
+  "production_files": [
+    {
+      "path": "cartesius/transforms.py",
+      "tested_sha256": "3613aa8891dbda38e2028fdd2be9cd75523ad9e1173c3e73165fb92626ce1ab8",
+      "original_blob_sha": "4a67c61eb608abfdea3f458dec82992cc41c4bc3",
+      "executed_lines": [
+        1,
+        2,
+        3,
+        6,
+        11,
+        12,
+        14,
+        25,
+        28,
+        33,
+        34,
+        35,
+        38,
+        43,
+        44,
+        45,
+        46,
+        48,
+        50,
+        52,
+        54,
+        55,
+        57,
+        60,
+        66,
+        67,
+        68,
+        70,
+        71,
+        73,
+        74,
+        75,
+        77,
+        80
+      ]
+    }
+  ],
+  "artifact_sha256": {
+    "junit.xml": "87cb4a17290c6473ab6469d7def65b22d58f882c54c2ebd012fcffd42b842137",
+    "coverage.json": "0d1a22b47d6453039792cc550d128dbea66bec0a04a0d7015b2424cbbbf213d8",
+    "stdout.txt": "7e9a669f00c180bc8fe7b617559384d9d2f1fb3bd7df4dc6109568e717958782",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
