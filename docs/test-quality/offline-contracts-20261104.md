@@ -90,3 +90,7 @@ Only actual current-head Sol review and completed nonfailing reported CI may per
 
 ## Canonical lint and equivalent coordinate collection repair
 Canonical setup.py:11 declares pylint~=2.11; CI alone installed unpinned4.1.3. Install exactly the declared supported range without disabling checks. R1721 still reproduced under canonical2.17.7; remove redundant coordinate comprehension via list(zip(xs,ys)). Fifteen actual _gen_poly behavior comparisons across1/2/3/7/20vertices and3seeds preserve byte-identical geometryWKB. Canonical pylint product/tests10.00 exit0. This explicit semantic-equivalent small product cleanup is within delegated quality-repair authority. Original tests/locks unchanged; no training/model/GPU.
+
+
+## Native functional CI runtime repair
+The complete original tests/test_modeling.py is a synthetic8x32 CPU tensor/ScoreHead forward and one backward gradient-existence assertion. It has no optimizer, parameter update, training loop, pretrained checkpoint or GPU use. The user explicitly permits this finite CPU autodiff functional contract; it is not training. Native tests CI now uses supported Python3.9 for original torch/lightning ranges, keeps all original test collection/assertions/dependency ranges, and changes no test selection. setup.py has no secret-authenticated package references, so existing GH_PAT environment is not consumed by dependency declarations. Existing lint passed and original failures remain mandatory holds.
