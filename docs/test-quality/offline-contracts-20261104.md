@@ -34,7 +34,6 @@ The existing offline runner now archives previous invocation artifacts and rejec
 
 ## Publication and operational boundary
 
-Actual default workflow operational hold: Actual push-triggered pytest workflow executes existing tests/test_modeling.py:13 backward pass; backpropagation is explicitly outside user authorization. It also passes private package authentication via GH_PAT. No push/PR/merge; local commit only pending user authorization for workflow isolation.
 
 The detailed receipt records clone, selected pin/base HEAD, applied patch SHA256, source SHA preservation, exact publication exclusions, execution logs, reviews/fixes/CI, PR URL and merge SHA. Review status and actual MERGED state will be checked independently before a completed claim.
 
@@ -50,3 +49,22 @@ PIPELINE_EXTRA_PYTHONPATH='/home/josh/scratch/code-asset-parallel-20261101/docx-
 
 Fresh positive evidence: `/home/josh/scratch/code-asset-parallel-20261101/docx-target20-20261103/test-quality-20261104/publication-python/evidence/cartesius/freshness-quality`. Actual subprocess negative evidence: `/home/josh/scratch/code-asset-parallel-20261101/docx-target20-20261103/test-quality-20261104/publication-python/evidence/cartesius/freshness-negative.log`. Original tests/expectations/logs remain preserved, and production source SHA checks still match. The output paths shown are lane-private evidence; independent users may choose any private directory.
 
+## Approved trigger isolation (2026-11-04)
+
+The user explicitly approved the exact trigger-only filter patch `5d3a8b0ba80e8262e78c05bc9803290bfd44fc98e72d26f6302a7bfd3835c515` from combined57. The previous operational publication hold is superseded only for this approved change. Actual default and local workflow bytes were compared with captured SHA values before applying the immutable patch with `git apply --unidiff-zero`.
+
+Changed workflows:
+
+- `.github/workflows/pytest.yml`
+
+Approved ignored paths:
+
+- `tests/**`
+- `scripts/offline/**`
+- `**/*.md`
+- `docs/**`
+- `.github/workflows/pytest.yml`
+
+The cumulative outgoing paths, including these workflow files and this document, are ignored by the automatic operational branch/PR triggers. Production-path negative controls retain their original triggering behavior. Jobs, steps, commands, tag filters, manual events and all other workflow structure remain unchanged. No deployment, credential access, image/tag publication or business integration was executed. The existing functional results and genuine failures above are reused; the workflow change did not rerun healthy source suites.
+
+Original criteria: publish first-party contracts and required support; preserve original assertions, approved source bytes and genuine failures; use actual Codex-only review and completed non-failing current-head CI. Skipped workflows are not proof that a required check succeeded. Required pending/failing checks continue to block normal merge. Undo: revert the resulting isolated squash commit. Criteria loosened: no.

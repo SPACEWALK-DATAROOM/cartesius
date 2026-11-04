@@ -1,6 +1,13 @@
 name: tests
 
-on: push
+on: 
+  push:
+    paths-ignore:
+      - "tests/**"
+      - "scripts/offline/**"
+      - "**/*.md"
+      - "docs/**"
+      - ".github/workflows/pytest.yml"
 
 jobs:
   build:
