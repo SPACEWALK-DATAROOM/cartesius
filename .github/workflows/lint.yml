@@ -1,6 +1,10 @@
 name: lint
 
-on: push
+on:
+  push:
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
 
 jobs:
   lint:
@@ -8,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+        with:
+          python-version: "3.11"
       - name: Check format with isort
         run: |
           pip install isort
@@ -18,6 +24,6 @@ jobs:
           yapf -rd .
       - name: Check format with pylint
         run: |
-          pip install pylint
+          pip install 'pylint~=2.11'
           pylint cartesius
           pylint tests --disable=redefined-outer-name

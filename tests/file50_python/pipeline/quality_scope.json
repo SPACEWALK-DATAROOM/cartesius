@@ -1,0 +1,8 @@
+{
+  "tests": [
+    "tests/file50_python/pipeline/wave12/test_label_row_conversion.py"
+  ],
+  "source_roots": [
+    "cartesius"
+  ]
+}

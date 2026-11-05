@@ -1,0 +1,223 @@
+{
+  "scope": "Actual JUnit IDs from the accepted 25-case suite plus 3 unique round4 contracts; prior identities and metadata retained.",
+  "tests": [
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p0]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p1]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p2]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p3]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p4]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p5]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_pos[p6]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p0]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p1]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p2]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p3]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p4]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_scale[p5]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p0]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p1]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p2]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p3]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p4]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.test_transforms",
+      "name": "test_norm_static_scale[p5]",
+      "origin": "original",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "tests.test_transforms"
+    },
+    {
+      "classname": "tests.offline_contracts.test_round4_transform_boundaries",
+      "name": "test_position_normalization_translates_multipolygon_parts_and_preserves_holes_z_and_source",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_round4_transform_boundaries",
+      "name": "test_scale_normalization_uses_one_xy_factor_and_leaves_line_z_values_unchanged",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_round4_transform_boundaries",
+      "name": "test_public_transform_registry_resolves_each_supported_name_to_its_implementation",
+      "origin": "added",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_base_transform_requires_implementation",
+      "origin": "added",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "added_tests.test_transform_contracts"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_translation_preserves_hole_area_vertices_and_original",
+      "origin": "added",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "added_tests.test_transform_contracts"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_scale_preserves_anchor_aspect_ratio_and_area_scaling",
+      "origin": "added",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "added_tests.test_transform_contracts"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_degenerate_point_is_preserved_without_division_by_zero",
+      "origin": "added",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "added_tests.test_transform_contracts"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_vertical_line_length_normalized_without_horizontal_displacement",
+      "origin": "added",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "added_tests.test_transform_contracts"
+    },
+    {
+      "classname": "tests.offline_contracts.test_transform_contracts",
+      "name": "test_static_scaling_uses_one_common_factor_for_different_shapes",
+      "origin": "added",
+      "status": "passed",
+      "prior_batch": "round2-g",
+      "prior_classname": "added_tests.test_transform_contracts"
+    }
+  ]
+}

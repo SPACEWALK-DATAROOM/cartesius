@@ -1,26 +1,35 @@
 name: tests
 
-on: push
+on:
+  push:
+    paths-ignore:
+      - "tests/**"
+      - "scripts/offline/**"
+      - "**/*.md"
+      - "docs/**"
 
+      - ".github/workflows/lint.yml"
+      - "pylintrc"
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.9]
 
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -e .[tests,graph,se3,cv2]
-        pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-$(python -c "import torch; print(torch.__version__)").html
+        PYG_BUILD=$(python -c "import torch; print('.'.join(torch.__version__.split('.')[:2]) + '.0+' + ('cu' + torch.version.cuda.replace('.', '') if torch.version.cuda else 'cpu'))")
+        pip install --only-binary=:all: torch-scatter torch-sparse -f "https://data.pyg.org/whl/torch-${PYG_BUILD}.html"
       env:
         GH_PAT: ${{ secrets.AUTH_TOKEN }}
     - name: Test with pytest
